@@ -6,7 +6,7 @@
 using namespace std;
 using namespace cv;
 
-int main() {
+int main2() {
 	// Grey Image
 	Mat grey = Mat::zeros(3, 3, CV_8UC1);
 	grey.at<uchar>(0, 0) = 0;
@@ -31,9 +31,9 @@ int main() {
 	color.at<Vec3b>(1, 0) = Vec3b(255, 0, 0);
 	color.at<Vec3b>(1, 1) = Vec3b(255, 255, 0);
 	color.at<Vec3b>(1, 2) = Vec3b(255, 0, 0);
-	color.at<Vec3b>(2, 0) = Vec3b(255, 0, 0);
-	color.at<Vec3b>(2, 1) = Vec3b(255, 0, 0);
-	color.at<Vec3b>(2, 2) = Vec3b(255, 0, 255);
+	color.at<Vec3b>(2, 0) = Vec3b(221, 119, 119);
+	color.at<Vec3b>(2, 1) = Vec3b(221, 119, 221);
+	color.at<Vec3b>(2, 2) = Vec3b(119, 221, 119);
 
 	Mat BigColor;
 	resize(color, BigColor, cv::Size(), 100, 100, cv::INTER_NEAREST);

@@ -1,10 +1,11 @@
 #include "opencv2/imgcodecs.hpp"
 #include "opencv2/highgui.hpp"
+#include "opencv2/core/core.hpp"
 #include <iostream>
 using namespace std;
 using namespace cv;
 
-int main2() {
+int main3() {
 
 	Mat skittles = imread("./Images/skittles.jpg");
 	vector<Mat> three_channels;
@@ -29,6 +30,7 @@ int main2() {
 	imshow("Window b", blue);
 	imshow("Window g", green);
 	imshow("Window r", red);
+
 
 	waitKey(0);
 	return 0;
