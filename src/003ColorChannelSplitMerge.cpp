@@ -6,30 +6,37 @@ using namespace std;
 using namespace cv;
 
 int main3() {
+	// Each color image is made of three colors - three channels - Blue, Green, Red
 
-	Mat skittles = imread("./Images/skittles.jpg");
-	vector<Mat> three_channels;
-	cv::split(skittles, three_channels);
+	Mat img = imread("./Images/lenna.png");
+	imshow("Lenna", img);
 
-	Mat zero = Mat::zeros(skittles.size(), CV_8UC1);
+	vector<Mat> threeChannels;
+	split(img, threeChannels);
 
-	Mat b = three_channels[0];
-	Mat g = three_channels[1];
-	Mat r = three_channels[2];
+	//imshow("Blue channel", threeChannels[0]);
+	//imshow("Green channel", threeChannels[1]);
+	//imshow("Red channel", threeChannels[2]);
 
-	imshow("All chan", skittles);
-
+	Mat zero = Mat::zeros(img.size(), CV_8UC1);
 	Mat blue;
 	Mat green;
 	Mat red;
 
-	merge(vector<Mat> {three_channels[0], zero, zero}, blue);
-	merge(vector<Mat> {zero, three_channels[1], zero}, green);
-	merge(vector<Mat> {zero, zero, three_channels[2]}, red);
+	merge(vector<Mat>{threeChannels[0], zero, zero}, blue);
+	merge(vector<Mat>{zero, threeChannels[1], zero}, green);
+	merge(vector<Mat>{zero, zero, threeChannels[2]}, red);
 
-	imshow("Window b", blue);
-	imshow("Window g", green);
-	imshow("Window r", red);
+	//imshow("Blue channel", blue);
+	//imshow("Green channel", green);
+	//imshow("Red channel", red);
+
+	Mat output;
+	merge(vector<Mat>{threeChannels[0], threeChannels[1], threeChannels[2]}, output);
+	imshow("Merged output", output);
+
+
+
 
 
 	waitKey(0);

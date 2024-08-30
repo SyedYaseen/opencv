@@ -6,7 +6,7 @@
 using namespace std;
 using namespace cv;
 
-int main4() {
+int mainxxx() {
 
 	Mat skittles = imread("./Images/skittles.jpg");
 	

@@ -6,7 +6,7 @@
 using namespace std;
 using namespace cv;
 
-int main() {
+int main2() {
 	// An image is basically a matrix
 	// Greyscale image - Mat contains brightness value (0 - 255) ranging between black and white
 	// Color image - Mat contains brightness values for three basic colors - Blue, Green, Red
