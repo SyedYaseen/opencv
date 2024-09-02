@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\003ColorChannelSplitMerge.cpp" />
+    <ClCompile Include="src\002CreateSimpleImage.cpp" />
+    <ClCompile Include="src\999RectangleRoiTransforms.cpp" />
+    <ClCompile Include="src\004PixelProcessing.cpp" />
+    <ClCompile Include="src\005GeometricTransforms.cpp" />
+    <ClCompile Include="src\006ConvolutionAndBlur.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="src\holi.jpg" />
+    <Image Include="src\lenna.png" />
+    <Image Include="src\skittles.jpg" />
+  </ItemGroup>
+</Project>
