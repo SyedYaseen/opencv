@@ -6,7 +6,7 @@
 using namespace std;
 using namespace cv;
 
-int main() {
+int main4() {
 	Mat img = imread("./Images/lenna.png");
 
 	Mat img_copy;
