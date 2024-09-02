@@ -7,9 +7,11 @@
     <ClCompile Include="src\004PixelProcessing.cpp" />
     <ClCompile Include="src\005GeometricTransforms.cpp" />
     <ClCompile Include="src\006ConvolutionAndBlur.cpp" />
+    <ClCompile Include="src\Thresholding.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
+    <None Include="course.md" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\holi.jpg" />

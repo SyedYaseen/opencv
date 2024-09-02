@@ -53,8 +53,10 @@
     <ClCompile Include="src\005GeometricTransforms.cpp" />
     <ClCompile Include="src\006ConvolutionAndBlur.cpp" />
     <ClCompile Include="src\999RectangleRoiTransforms.cpp" />
+    <ClCompile Include="src\Thresholding.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="course.md" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
