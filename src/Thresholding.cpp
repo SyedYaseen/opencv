@@ -10,8 +10,9 @@ using namespace cv;
 // Thresholding used for segmentation
 // Can separate foreground from background
 
-int main() {
-    Mat img = imread("./Images/coins.png", 0);
+
+int mainThres() {
+    Mat img = imread("./Images/lenna.png", 0);
 
     Mat thresh_bin_255;
     cv::threshold(img, thresh_bin_255, 120.0, 255, THRESH_BINARY); // Converts stricty to ether zero or 1 based on threshold value
@@ -37,20 +38,6 @@ int main() {
     //Mat thresh_mask;
     //cv::threshold(img, thresh_mask, 120.0, 255, THRESH_MASK);
     //imshow("ThreshMask", thresh_mask);
-
-    // Parameters
-    int histSize = 256; // Number of bins
-    float range[] = { 0, 256 }; // Range of pixel values
-    const float* histRange = { range };
-    bool uniform = true, accumulate = false;
-
-    // Output histogram
-    Mat hist;
-    calcHist(&img, 1, 0, Mat(), hist, 1, &histSize, &histRange, uniform, accumulate);
-    Mat scaledHist;
-    resize(hist, scaledHist, cv::Size(), 25.0, 10.0);
-    imshow("Hist", scaledHist);
-
 
     waitKey(0);
     return 0;
