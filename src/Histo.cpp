@@ -6,7 +6,7 @@
 using namespace std;
 using namespace cv;
 
-int main()
+int mainHisto()
 {
     Mat img = imread("./Images/lenna.png", IMREAD_COLOR);
     if (img.empty())
