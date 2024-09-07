@@ -11,7 +11,7 @@ using namespace cv;
 // Can separate foreground from background
 
 
-int main() {
+int mainThresh() {
     Mat img = imread("./Images/lenna.png", 0);
 
     Mat thresh_bin_255;
