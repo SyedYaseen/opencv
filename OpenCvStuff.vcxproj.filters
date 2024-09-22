@@ -10,6 +10,7 @@
     <ClCompile Include="src\Thresholding.cpp" />
     <ClCompile Include="src\EdgeDetection.cpp" />
     <ClCompile Include="src\Histo.cpp" />
+    <ClCompile Include="src\MorphologicalOps.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />

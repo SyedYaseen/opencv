@@ -1,47 +1,47 @@
 ##Module 2: Basic Image Processing
 
 2.3. Image Thresholding
-
-Simple thresholding: Binary, inverse binary, truncation, etc.
-Adaptive thresholding: Mean and Gaussian methods.
-Otsu’s Binarization method.
+X Simple thresholding: Binary, inverse binary, truncation, etc.
+X Adaptive thresholding: Mean and Gaussian methods.
+X Otsu’s Binarization method.
 
 2.5. Edge Detection
-
-Canny Edge Detection: Theory and implementation.
-Sobel and Scharr operators: Gradient-based edge detection.
+X Canny Edge Detection: Theory and implementation.
+X Sobel and Scharr operators: Gradient-based edge detection.
 Laplacian operator for edge detection.
 
 
 ##Module 3: Advanced Image Processing
+
 3.1. Image Gradients and Morphological Operations
+X Understanding image gradients: Computing the magnitude and direction of edges.
+X Morphological operations: Erosion, dilation, opening, and closing.
+X Morphological gradients: Difference between dilation and erosion.
 
-Understanding image gradients: Computing the magnitude and direction of edges.
-Morphological operations: Erosion, dilation, opening, and closing.
-Morphological gradients: Difference between dilation and erosion.
 3.2. Image Filtering and Custom Kernels
-
-Convolution: Understanding kernels and filters.
+X Convolution: Understanding kernels and filters.
 Applying custom filters: Sharpening, embossing, and edge detection.
 High-pass and low-pass filtering.
+
 3.3. Histogram Analysis and Equalization
-
-Understanding histograms: Plotting histograms using OpenCV.
-Histogram equalization: Enhancing contrast in images.
+X Understanding histograms: Plotting histograms using OpenCV.
+X Histogram equalization: Enhancing contrast in images.
 CLAHE (Contrast Limited Adaptive Histogram Equalization).
-3.4. Contour Detection and Analysis
 
+3.4. Contour Detection and Analysis
 Finding and drawing contours: cv2.findContours(), cv2.drawContours().
 Contour hierarchy: External and internal contours.
 Approximation and convex hull.
 Contour properties: Area, perimeter, centroid, bounding box, etc.
-3.5. Image Segmentation
 
+3.5. Image Segmentation
 Watershed Algorithm: Image segmentation using markers.
 GrabCut Algorithm: Foreground extraction using GrabCut.
-##Module 4: Object Detection Basics
-4.1. Introduction to Object Detection
 
+
+##Module 4: Object Detection Basics
+
+4.1. Introduction to Object Detection
 Overview of object detection: Challenges and approaches.
 Difference between object detection, recognition, and tracking.
 4.2. Template Matching
@@ -63,60 +63,61 @@ Difference between traditional and deep learning-based detection methods.
 Introduction to YOLO (You Only Look Once): Concept and implementation.
 Introduction to SSD (Single Shot Multibox Detector): Concept and implementation.
 Setting up and running object detection using pre-trained models.
+
+
 ##Module 5: Deep Learning with OpenCV
 5.1. Deep Learning Basics
-
 Introduction to neural networks and CNNs.
 Overview of OpenCV’s DNN ##Module.
 Loading and using pre-trained models in OpenCV.
-5.2. Object Detection with YOLO
 
+5.2. Object Detection with YOLO
 YOLO architecture: Understanding the layers and working mechanism.
 Implementing YOLO object detection using OpenCV.
 Fine-tuning and optimizing YOLO for performance.
-5.3. Object Detection with SSD
 
+5.3. Object Detection with SSD
 SSD architecture: Understanding the layers and working mechanism.
 Implementing SSD object detection using OpenCV.
 Comparison between YOLO and SSD in terms of performance and accuracy.
-5.4. Face Detection Using DNN ##Module
 
+5.4. Face Detection Using DNN ##Module
 Using deep learning models for face detection.
 Comparison with traditional methods like Haar Cascades.
 Implementation and real-time face detection.
-5.5. Real-Time Object Detection with Webcam
 
+5.5. Real-Time Object Detection with Webcam
 Setting up real-time object detection pipeline.
 Optimizing for speed: Frame rate considerations.
 Use cases and applications in real-world scenarios.
-##Module 6: Hands-on Projects
-6.1. Project 1: Building an Image Classifier
 
+
+##Module 6: Hands-on Projects
+
+6.1. Project 1: Building an Image Classifier
 Creating a simple image classifier using traditional methods (e.g., k-NN, SVM).
 Using feature descriptors like HOG (Histogram of Oriented Gradients).
 Transitioning to CNN-based classifiers.
-6.2. Project 2: Real-time Face Detection and Recognition
 
+6.2. Project 2: Real-time Face Detection and Recognition
 Implementing face detection with OpenCV.
 Using OpenCV's face ##Module for recognition.
 Building a simple attendance system using face recognition.
-6.3. Project 3: Vehicle Detection and Counting
 
+6.3. Project 3: Vehicle Detection and Counting
 Vehicle detection using pre-trained models.
 Counting vehicles in a video stream.
 Applications in traffic monitoring systems.
-6.4. Project 4: Object Tracking in Videos
 
+6.4. Project 4: Object Tracking in Videos
 Introduction to object tracking algorithms: KLT, MeanShift, CamShift, and CSRT.
 Implementing real-time object tracking.
 Use cases in video surveillance and sports analytics.
-6.5. Project 5: Image Segmentation with Mask R-CNN
 
+6.5. Project 5: Image Segmentation with Mask R-CNN
 Understanding Mask R-CNN for instance segmentation.
 Implementing Mask R-CNN using pre-trained models.
 Applications in medical imaging and autonomous driving.
-
-
 
 
 Course Structure & Syllabus Outline

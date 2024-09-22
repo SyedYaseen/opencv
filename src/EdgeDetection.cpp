@@ -5,7 +5,7 @@
 using namespace std;
 using namespace cv;
 
-int main()
+int mainEdge()
 {
     Mat img = imread("./Images/coins.png", 0);
     //Mat img = imread("./Images/lenna.png", 0);
