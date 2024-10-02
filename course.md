@@ -26,7 +26,7 @@ High-pass and low-pass filtering.
 3.3. Histogram Analysis and Equalization
 X Understanding histograms: Plotting histograms using OpenCV.
 X Histogram equalization: Enhancing contrast in images.
-CLAHE (Contrast Limited Adaptive Histogram Equalization).
+X CLAHE (Contrast Limited Adaptive Histogram Equalization).
 
 3.4. Contour Detection and Analysis
 Finding and drawing contours: cv2.findContours(), cv2.drawContours().
@@ -44,8 +44,8 @@ GrabCut Algorithm: Foreground extraction using GrabCut.
 4.1. Introduction to Object Detection
 Overview of object detection: Challenges and approaches.
 Difference between object detection, recognition, and tracking.
-4.2. Template Matching
 
+4.2. Template Matching
 Understanding template matching: cv2.matchTemplate().
 Techniques for matching: Normalized cross-correlation, squared difference.
 Multi-scale template matching.

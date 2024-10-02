@@ -11,6 +11,7 @@
     <ClCompile Include="src\EdgeDetection.cpp" />
     <ClCompile Include="src\Histo.cpp" />
     <ClCompile Include="src\MorphologicalOps.cpp" />
+    <ClCompile Include="src\HistogramEqualization.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
