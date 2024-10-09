@@ -11,13 +11,22 @@ using namespace cv;
 
 
 int main() {
-	Mat img = imread("./Images/coins.png", 0);
+	Mat img = imread("./Images/HexMulti.png", 0);
+	resize(img, img, Size(300, 300));
+	imshow("orig", img);
+	Mat out = Mat::zeros(img.size(), CV_8UC1);
+	Mat eroded = Mat::zeros(img.size(), CV_8UC1);
+	//medianBlur(img, out, 13);
+	//GaussianBlur(img, out, Size(5, 5), 0);
+
+	//morphologyEx(out, eroded, MORPH_DILATE, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)));
 	//Mat img = imread("./Images/skittles.jpg", 0);
-	threshold(img, img, 0, 255, THRESH_OTSU);
+
 	vector<vector<Point>> contours;
 	vector<Vec4i> hierarchy;
-	findContours(img, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE);
-
+	findContours(img, contours, hierarchy, RETR_LIST, CHAIN_APPROX_SIMPLE);
+	//imshow("out", out);
+	//imshow("img", eroded);
 	Point start{ 0,0 };
 	auto polarAngle = [start](Point& p1, Point& p2) {
 		// start is the base point
@@ -30,54 +39,107 @@ int main() {
 
 		// Slope(p1, start) < Slop(p2, start)
 		// If false, it will swap
-		return (p1.y - start.y) * (p2.x - start.x) < (p1.x - start.x) * (p2.y - start.y);
+
+		int lhs = (p1.y - start.y) * (p2.x - start.x);
+		int rhs = (p1.x - start.x) * (p2.y - start.y);
+		if (lhs == rhs) {
+			int dist1 = (p1.x - start.x) * (p1.x - start.x) + (p1.y - start.y) * (p1.y - start.y);
+			int dist2 = (p2.x - start.x) * (p2.x - start.x) + (p2.y - start.y) * (p2.y - start.y);
+			return dist1 < dist2;
+		}
+		return lhs < rhs;
 	};
+
+	Mat hull = Mat::zeros(eroded.size(), CV_8UC1);
+	Mat cont = Mat::zeros(eroded.size(), CV_8UC1);
 
 	for (auto& c : contours) {
 		stack<Point> hullPoints;
 		start = c[0];
-		int startIndex = -1;
-		for (int i = 0; i < c.size(); i++) {
+		int startIndex = 0;
+		for (int i = 1; i < c.size(); i++) {
 			if (c[i].y < start.y || (c[i].y == start.y && c[i].x < start.x)) {
 				start = c[i];
 				startIndex = i;
-			}			
+			}
 		}
 
 		// Swap the first value with the lowest point
-		Point temp = c[startIndex];
-		c[startIndex] = c[0];
-		c[0] = temp;
+		swap(c[startIndex], c[0]);
+		//Point temp = c[startIndex];
+		//c[startIndex] = c[0];
+		//c[0] = temp;
 
 		sort(c.begin() + 1, c.end(), polarAngle); // Sort from pos 1 since we dont want o change first position
 		
-		Point p0, p1, p2;
-		p0 = c[0];
-		p1 = c[1];
-		p2 = c[2];
+		for (Point p : c) {
+			cont.at<uchar>(p.y, p.x) = 255;
 
-		hullPoints.push(p0);
-		hullPoints.push(p1);
+			cont.at<uchar>(p.y - 1, p.x - 1) = 200;
+			cont.at<uchar>(p.y + 1, p.x + 1) = 200;
+
+
+			cont.at<uchar>(p.y + 1, p.x + 1) = 200;
+			cont.at<uchar>(p.y + 1, p.x - 1) = 200;
+
+			cont.at<uchar>(p.y - 1, p.x) = 200;
+			cont.at<uchar>(p.y + 1, p.x) = 200;
+
+			cont.at<uchar>(p.y, p.x - 1) = 200;
+			cont.at<uchar>(p.y, p.x + 1) = 200;
+		}
+
+		imshow("cont", cont);
+
+		hullPoints.push(c[0]);
+		hullPoints.push(c[1]);
 
 		for (int i = 1; i < c.size() - 1; i++) {
-			// Find determinant of vectors formed by p0 -> p1 and p0 -> p2
-			Point v1(p1.x - p0.x, p1.y - p0.y);
-			Point v2(p2.x - p0.x, p2.y - p0.y);
-			int determinant = v1.x * v2.y - v2.x * v2.y;
+			Point top = hullPoints.top(); hullPoints.pop(); // check if top needs to stay
+			Point secondTop = hullPoints.top();
+			Point next = c[i];
 
-			if (determinant <= 0) {
-				hullPoints.pop();
-				hullPoints.push(p2);
-				p1 = p2;
-				p2 = c[i + 1];
+			// Find determinant of vectors formed by p0 -> p1 and p0 -> p2
+			Point v1(top.x - secondTop.x, top.y - secondTop.y);
+			Point v2(next.x - secondTop.x, next.y - secondTop.y);
+			int determinant = v1.x * v2.y - v2.x * v1.y;
+
+			while (determinant <= 0 && hullPoints.size() > 1) {
+				Point top = hullPoints.top(); hullPoints.pop();
+				Point secondTop = hullPoints.top();
+
+				v1 = Point(top.x - secondTop.x, top.y - secondTop.y);
+				v2 = Point(next.x - secondTop.x, next.y - secondTop.y);
+				determinant = v1.x * v2.y - v2.x * v1.y;
 			}
-			else {
-				hullPoints.push(p2);
-				p0 = p1;
-				p1 = p2;
-				p2 = c[i + 1];
-			}
+
+			hullPoints.push(top);
+			hullPoints.push(next);
 		}
+
+		
+
+		while (!hullPoints.empty()) {
+			Point tp = hullPoints.top();
+			hull.at<uchar>(tp.y, tp.x) = 255;
+
+	/*		hull.at<uchar>(tp.y - 1, tp.x - 1) = 200;
+			hull.at<uchar>(tp.y + 1, tp.x + 1) = 200;
+
+
+			hull.at<uchar>(tp.y + 1, tp.x + 1) = 200;
+			hull.at<uchar>(tp.y + 1, tp.x - 1) = 200;
+
+			hull.at<uchar>(tp.y - 1, tp.x) = 200;
+			hull.at<uchar>(tp.y + 1, tp.x) = 200;
+
+			hull.at<uchar>(tp.y, tp.x - 1) = 200;
+			hull.at<uchar>(tp.y, tp.x + 1) = 200;*/
+
+			hullPoints.pop();
+		}
+
+		imshow("hull", hull);
 
 	}
 
