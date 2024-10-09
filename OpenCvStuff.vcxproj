@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -53,6 +53,8 @@
     <ClCompile Include="src\005GeometricTransforms.cpp" />
     <ClCompile Include="src\006ConvolutionAndBlur.cpp" />
     <ClCompile Include="src\999RectangleRoiTransforms.cpp" />
+    <ClCompile Include="src\Contou.cpp" />
+    <ClCompile Include="src\ConvexHull.cpp" />
     <ClCompile Include="src\EdgeDetection.cpp" />
     <ClCompile Include="src\Histo.cpp" />
     <ClCompile Include="src\HistogramEqualization.cpp" />

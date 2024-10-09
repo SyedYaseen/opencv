@@ -12,6 +12,8 @@
     <ClCompile Include="src\Histo.cpp" />
     <ClCompile Include="src\MorphologicalOps.cpp" />
     <ClCompile Include="src\HistogramEqualization.cpp" />
+    <ClCompile Include="src\Contou.cpp" />
+    <ClCompile Include="src\ConvexHull.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />

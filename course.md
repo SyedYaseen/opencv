@@ -29,9 +29,9 @@ X Histogram equalization: Enhancing contrast in images.
 X CLAHE (Contrast Limited Adaptive Histogram Equalization).
 
 3.4. Contour Detection and Analysis
-Finding and drawing contours: cv2.findContours(), cv2.drawContours().
-Contour hierarchy: External and internal contours.
-Approximation and convex hull.
+X Finding and drawing contours: cv2.findContours(), cv2.drawContours().
+X Contour hierarchy: External and internal contours.
+X Approximation and convex hull.
 Contour properties: Area, perimeter, centroid, bounding box, etc.
 
 3.5. Image Segmentation
@@ -49,17 +49,17 @@ Difference between object detection, recognition, and tracking.
 Understanding template matching: cv2.matchTemplate().
 Techniques for matching: Normalized cross-correlation, squared difference.
 Multi-scale template matching.
-4.3. Haar Cascades for Object Detection
 
+4.3. Haar Cascades for Object Detection
 Introduction to Haar Cascades: Theory behind Haar features.
 Face detection using pre-trained Haar cascades.
 Creating custom Haar cascades (optional, advanced).
-4.4. Introduction to Deep Learning-Based Object Detection
 
+4.4. Introduction to Deep Learning-Based Object Detection
 Overview of deep learning in computer vision: Convolutional Neural Networks (CNNs).
 Difference between traditional and deep learning-based detection methods.
-4.5. Using Pre-trained Models for Object Detection
 
+4.5. Using Pre-trained Models for Object Detection
 Introduction to YOLO (You Only Look Once): Concept and implementation.
 Introduction to SSD (Single Shot Multibox Detector): Concept and implementation.
 Setting up and running object detection using pre-trained models.
