@@ -53,8 +53,15 @@ int main() {
 	Mat hull = Mat::zeros(eroded.size(), CV_8UC1);
 	Mat cont = Mat::zeros(eroded.size(), CV_8UC1);
 
+	RNG rng(12345);
+	stack<Point> hullPoints;
+	vector<vector<Point>>hullPtsMyImpl(contours.size());
+
+	Mat drawing = Mat::zeros(img.size(), CV_8UC3); // open cv out image
+	vector<vector<Point> >hullOCV(contours.size());
+
 	for (auto& c : contours) {
-		stack<Point> hullPoints;
+		
 		start = c[0];
 		int startIndex = 0;
 		for (int i = 1; i < c.size(); i++) {
@@ -66,31 +73,8 @@ int main() {
 
 		// Swap the first value with the lowest point
 		swap(c[startIndex], c[0]);
-		//Point temp = c[startIndex];
-		//c[startIndex] = c[0];
-		//c[0] = temp;
-
 		sort(c.begin() + 1, c.end(), polarAngle); // Sort from pos 1 since we dont want o change first position
 		
-		for (Point p : c) {
-			cont.at<uchar>(p.y, p.x) = 255;
-
-			cont.at<uchar>(p.y - 1, p.x - 1) = 200;
-			cont.at<uchar>(p.y + 1, p.x + 1) = 200;
-
-
-			cont.at<uchar>(p.y + 1, p.x + 1) = 200;
-			cont.at<uchar>(p.y + 1, p.x - 1) = 200;
-
-			cont.at<uchar>(p.y - 1, p.x) = 200;
-			cont.at<uchar>(p.y + 1, p.x) = 200;
-
-			cont.at<uchar>(p.y, p.x - 1) = 200;
-			cont.at<uchar>(p.y, p.x + 1) = 200;
-		}
-
-		imshow("cont", cont);
-
 		hullPoints.push(c[0]);
 		hullPoints.push(c[1]);
 
@@ -105,43 +89,49 @@ int main() {
 			int determinant = v1.x * v2.y - v2.x * v1.y;
 
 			while (determinant <= 0 && hullPoints.size() > 1) {
-				Point top = hullPoints.top(); hullPoints.pop();
-				Point secondTop = hullPoints.top();
+				top = hullPoints.top(); hullPoints.pop();
+				secondTop = hullPoints.top();
 
 				v1 = Point(top.x - secondTop.x, top.y - secondTop.y);
 				v2 = Point(next.x - secondTop.x, next.y - secondTop.y);
-				determinant = v1.x * v2.y - v2.x * v1.y;
+				determinant = v1.x * v2.y - v2.x * v1.y; // recursively find the determinant
 			}
 
 			hullPoints.push(top);
 			hullPoints.push(next);
 		}
 
-		
 
+		vector<Point> currHull;
 		while (!hullPoints.empty()) {
-			Point tp = hullPoints.top();
-			hull.at<uchar>(tp.y, tp.x) = 255;
-
-	/*		hull.at<uchar>(tp.y - 1, tp.x - 1) = 200;
-			hull.at<uchar>(tp.y + 1, tp.x + 1) = 200;
-
-
-			hull.at<uchar>(tp.y + 1, tp.x + 1) = 200;
-			hull.at<uchar>(tp.y + 1, tp.x - 1) = 200;
-
-			hull.at<uchar>(tp.y - 1, tp.x) = 200;
-			hull.at<uchar>(tp.y + 1, tp.x) = 200;
-
-			hull.at<uchar>(tp.y, tp.x - 1) = 200;
-			hull.at<uchar>(tp.y, tp.x + 1) = 200;*/
-
+			currHull.push_back(hullPoints.top());
 			hullPoints.pop();
 		}
-
-		imshow("hull", hull);
-
+		hullPtsMyImpl.push_back(currHull);
 	}
+
+	// opencv implementation
+
+	for (size_t i = 0; i < contours.size(); i++)
+	{
+		convexHull(contours[i], hullOCV[i]);
+	}
+
+	for (size_t i = 0; i < contours.size(); i++)
+	{
+		//Opencv impl
+		Scalar color = Scalar(rng.uniform(0, 256), rng.uniform(0, 256), rng.uniform(0, 256));
+		drawContours(drawing, contours, (int)i, color);
+		drawContours(drawing, hullOCV, (int)i, color);
+
+		//My impl
+		drawContours(hull, contours, (int)i, color);
+		drawContours(hull, hullPtsMyImpl, (int)i, color);
+	}
+
+	imshow("Hull Open cv", drawing);
+	imshow("hull my implementation", hull);
+
 
 	waitKey(0);
 }

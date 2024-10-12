@@ -18,10 +18,19 @@
   <ItemGroup>
     <None Include="README.md" />
     <None Include="course.md" />
+    <None Include="Images\morphocar.webp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\holi.jpg" />
     <Image Include="src\lenna.png" />
     <Image Include="src\skittles.jpg" />
+    <Image Include="Images\coins.png" />
+    <Image Include="Images\HexMulti.png" />
+    <Image Include="Images\holi.jpg" />
+    <Image Include="Images\j.png" />
+    <Image Include="Images\Lemon.jpg" />
+    <Image Include="Images\lenna.png" />
+    <Image Include="Images\SingleHex.png" />
+    <Image Include="Images\skittles.jpg" />
   </ItemGroup>
 </Project>
