@@ -14,6 +14,7 @@
     <ClCompile Include="src\HistogramEqualization.cpp" />
     <ClCompile Include="src\Contou.cpp" />
     <ClCompile Include="src\ConvexHull.cpp" />
+    <ClCompile Include="src\WatershedAlgo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />

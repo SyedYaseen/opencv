@@ -10,7 +10,7 @@ using namespace std;
 using namespace cv;
 
 
-int main() {
+int mainConvex() {
 	Mat img = imread("./Images/HexMulti.png", 0);
 	resize(img, img, Size(300, 300));
 	imshow("orig", img);
@@ -134,4 +134,6 @@ int main() {
 
 
 	waitKey(0);
+
+	return 0;
 }

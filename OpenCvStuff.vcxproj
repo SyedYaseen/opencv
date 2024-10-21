@@ -60,6 +60,7 @@
     <ClCompile Include="src\HistogramEqualization.cpp" />
     <ClCompile Include="src\MorphologicalOps.cpp" />
     <ClCompile Include="src\Thresholding.cpp" />
+    <ClCompile Include="src\WatershedAlgo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="course.md" />
