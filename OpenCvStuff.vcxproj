@@ -55,6 +55,7 @@
     <ClCompile Include="src\999RectangleRoiTransforms.cpp" />
     <ClCompile Include="src\Contou.cpp" />
     <ClCompile Include="src\ConvexHull.cpp" />
+    <ClCompile Include="src\DistanceTransform.cpp" />
     <ClCompile Include="src\EdgeDetection.cpp" />
     <ClCompile Include="src\Histo.cpp" />
     <ClCompile Include="src\HistogramEqualization.cpp" />
@@ -76,6 +77,7 @@
     <Image Include="Images\lenna.png" />
     <Image Include="Images\SingleHex.png" />
     <Image Include="Images\skittles.jpg" />
+    <Image Include="Images\touchCoins.jpg" />
     <Image Include="src\holi.jpg" />
     <Image Include="src\lenna.png" />
     <Image Include="src\skittles.jpg" />

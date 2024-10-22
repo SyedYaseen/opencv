@@ -10,7 +10,7 @@ using namespace std;
 using namespace cv;
 
 
-int main() {
+int mainWater() {
 	Mat src = imread("./Images/touchCoins.jpg", 0);
 	imshow("src", src);
 

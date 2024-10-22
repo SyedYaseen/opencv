@@ -15,6 +15,7 @@
     <ClCompile Include="src\Contou.cpp" />
     <ClCompile Include="src\ConvexHull.cpp" />
     <ClCompile Include="src\WatershedAlgo.cpp" />
+    <ClCompile Include="src\DistanceTransform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
@@ -33,5 +34,6 @@
     <Image Include="Images\lenna.png" />
     <Image Include="Images\SingleHex.png" />
     <Image Include="Images\skittles.jpg" />
+    <Image Include="Images\touchCoins.jpg" />
   </ItemGroup>
 </Project>
